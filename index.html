@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyx Matrix Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="matrix-overlay"></div>
+    <header class="site-header">
+      <div class="logo">NYX<span>LAB</span></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#demo">Demo</a>
+        <a href="#download">Download</a>
+        <a href="#admin">Admin</a>
+      </nav>
+      <div class="auth-actions" id="auth-actions">
+        <button class="ghost" data-open="login">Login</button>
+        <button class="primary" data-open="register">Register</button>
+      </div>
+      <div class="auth-actions hidden" id="user-actions">
+        <span class="user-pill" id="user-pill"></span>
+        <button class="ghost" id="logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Matrix-grade project delivery</p>
+          <h1>Nyx Matrix Lab</h1>
+          <p class="lead">
+            A zero-noise, high-contrast portal to showcase, demo, and deploy your
+            coding project. Secure downloads, command-line demos, and a hardened
+            admin console baked in.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" data-open="register">Access the Lab</button>
+            <button class="ghost" data-open="login">Operator Login</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <h3>99.98%</h3>
+              <p>Integrity uptime</p>
+            </div>
+            <div>
+              <h3>7</h3>
+              <p>Defense layers</p>
+            </div>
+            <div>
+              <h3>3.2s</h3>
+              <p>Demo boot time</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-terminal">
+          <div class="terminal-header">
+            <span></span><span></span><span></span>
+          </div>
+          <pre class="terminal-body" id="terminal-sequence">
+[nyx@lab]$ init project
+Loading neural mesh... done
+Encrypting deployment package... done
+Checking access modules... ok
+Mounting demo environment... ok
+          </pre>
+        </div>
+      </section>
+
+      <section id="about" class="panel">
+        <div class="panel-header">
+          <h2>Project Arsenal</h2>
+          <p>Everything your reviewers need, wrapped in a cyberpunk interface.</p>
+        </div>
+        <div class="grid">
+          <article>
+            <h3>Showcase Feed</h3>
+            <p>
+              Present your features, architecture, and story in a cinematic,
+              matrix-inspired experience.
+            </p>
+          </article>
+          <article>
+            <h3>Live Demo Shell</h3>
+            <p>
+              Run a guided, terminal-style demo with custom commands and outputs
+              to highlight product value.
+            </p>
+          </article>
+          <article>
+            <h3>Secure Artifact Vault</h3>
+            <p>
+              Gate downloadable assets behind authenticated access with audit
+              logging and admin toggles.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="panel">
+        <div class="panel-header">
+          <h2>Command Demo</h2>
+          <p>Run the simulated demo sequence below.</p>
+        </div>
+        <div class="demo-shell">
+          <div class="demo-output" id="demo-output">
+            <p>nyx@lab:~$ status</p>
+            <p>&gt; scanning modules...</p>
+            <p>&gt; tracing pipelines...</p>
+            <p>&gt; all systems stable.</p>
+          </div>
+          <div class="demo-actions">
+            <button class="primary" id="run-demo">Run demo sequence</button>
+            <button class="ghost" id="reset-demo">Reset output</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="download" class="panel">
+        <div class="panel-header">
+          <h2>Download Vault</h2>
+          <p>
+            Access the source package once authenticated. Downloads are audited
+            and can be disabled by admin.
+          </p>
+        </div>
+        <div class="download-card">
+          <div>
+            <h3>Nyx Lab Source Package</h3>
+            <p>Version 2.6.4 • 42MB • Encrypted payload</p>
+            <p class="download-status" id="download-status"></p>
+          </div>
+          <a
+            href="downloads/project-source.zip"
+            class="primary"
+            id="download-button"
+            download
+            >Download</a
+        </div>
+      </section>
+
+      <section id="admin" class="panel">
+        <div class="panel-header">
+          <h2>Admin Command</h2>
+          <p>Controls for administrators to manage access and messaging.</p>
+        </div>
+        <div class="admin-grid">
+          <div class="admin-card">
+            <h3>Security Controls</h3>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-downloads" />
+              <span>Enable downloads</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-maintenance" />
+              <span>Maintenance mode</span>
+            </label>
+            <button class="ghost" id="reset-users">Reset user registry</button>
+          </div>
+          <div class="admin-card">
+            <h3>Broadcast</h3>
+            <textarea id="broadcast-message" rows="6"></textarea>
+            <button class="primary" id="save-broadcast">Save broadcast</button>
+          </div>
+          <div class="admin-card">
+            <h3>Operator Registry</h3>
+            <div class="user-list" id="user-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Nyx Matrix Lab © 2049 • Admin: <strong>admin</strong> / <strong>matrix</strong></p>
+      <p id="broadcast-display"></p>
+    </footer>
+
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <h3>Operator Login</h3>
+        <form id="login-form">
+          <label>
+            Username
+            <input type="text" name="username" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <button class="primary" type="submit">Authenticate</button>
+        </form>
+        <button class="ghost" data-close>Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+      <div class="modal-content">
+        <h3>Create Operator Account</h3>
+        <form id="register-form">
+          <label>
+            Username
+            <input type="text" name="username" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <button class="primary" type="submit">Register</button>
+        </form>
+        <button class="ghost" data-close>Cancel</button>
+      </div>
+    </div>
+
+    <div class="modal" id="message-modal">
+      <div class="modal-content">
+        <h3 id="message-title"></h3>
+        <p id="message-body"></p>
+        <button class="primary" data-close>Close</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
