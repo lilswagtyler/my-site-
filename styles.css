@@ -1,0 +1,389 @@
+:root {
+  color-scheme: dark;
+  --green: #5bff7f;
+  --green-soft: rgba(91, 255, 127, 0.2);
+  --panel: rgba(2, 12, 6, 0.85);
+  --glow: 0 0 20px rgba(91, 255, 127, 0.3);
+  --text: #d6ffe0;
+  --muted: #82a88d;
+  --border: rgba(91, 255, 127, 0.2);
+  --danger: #ff5178;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Rajdhani", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #032212 0%, #010b06 55%, #000 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.matrix-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(0, 255, 128, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 255, 128, 0.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 8vw;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 6, 2, 0.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+}
+
+.logo span {
+  color: var(--green);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 12px;
+}
+
+button,
+.primary,
+.ghost {
+  border: none;
+  cursor: pointer;
+  padding: 10px 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background: var(--green);
+  color: #001a0b;
+  box-shadow: var(--glow);
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(91, 255, 127, 0.5);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.ghost:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.hidden {
+  display: none;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 80px 8vw 40px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  margin: 12px 0 18px;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--green);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.lead {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.hero-actions {
+  margin: 24px 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 28px;
+}
+
+.hero-stats h3 {
+  font-size: 1.6rem;
+  color: var(--green);
+}
+
+.hero-stats p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.hero-terminal {
+  background: rgba(0, 8, 3, 0.9);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(91, 255, 127, 0.1);
+}
+
+.terminal-header span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.6;
+}
+
+.terminal-body {
+  font-family: "Share Tech Mono", monospace;
+  padding: 24px;
+  line-height: 1.6;
+  color: var(--green);
+  min-height: 220px;
+}
+
+.panel {
+  padding: 60px 8vw;
+}
+
+.panel-header {
+  margin-bottom: 32px;
+}
+
+.panel-header h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.panel-header p {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.grid article,
+.download-card,
+.demo-shell,
+.admin-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: var(--glow);
+}
+
+.grid h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.demo-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.demo-output {
+  font-family: "Share Tech Mono", monospace;
+  background: rgba(0, 5, 2, 0.9);
+  border: 1px solid var(--border);
+  padding: 16px;
+  min-height: 180px;
+  border-radius: 8px;
+  color: var(--green);
+}
+
+.demo-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.download-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.download-status {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.admin-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.admin-card textarea {
+  width: 100%;
+  background: rgba(0, 5, 2, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+.toggle input {
+  accent-color: var(--green);
+}
+
+.user-list {
+  display: grid;
+  gap: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.user-pill {
+  background: rgba(91, 255, 127, 0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+footer {
+  padding: 40px 8vw 60px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 5, 2, 0.8);
+  display: grid;
+  gap: 8px;
+}
+
+footer p {
+  color: var(--muted);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 5, 2, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: rgba(1, 12, 6, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  width: min(420px, 100%);
+  display: grid;
+  gap: 16px;
+  box-shadow: var(--glow);
+}
+
+.modal-content label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.modal-content input {
+  background: rgba(0, 5, 2, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+@media (max-width: 920px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .download-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
